@@ -10,8 +10,10 @@ apt-get install libexpat1-dev zlib1g-dev libbz2-dev libpq-dev libgeos-dev libgeo
 apt-get install libharfbuzz-dev libpng-dev libfreetype6-dev
 apt-get install autoconf apache2-dev
 apt-get install git
+apt-get install postgresql postgresql-contrib postgis postgresql-9.4-postgis-2.1
 #-- Compile the things
-
+mkdir build
+cd build
 #-- osm2psql
 git clone git://github.com/openstreetmap/osm2pgsql.git
 cd osm2pgsql
@@ -33,14 +35,15 @@ cd mod_tile
 ./autogen.sh
 ./configure
 make -j12
-cd ..
+cd ../../
 #-- copy things to pkg
 rm -rf pkg/
-mkdir pkg
-cp -r mapnik pkg/
-cp -r mod_tile pkg/
-cp osm2pgsql/build/osm2pgsql pkg/osm2pgsql
-chmod +x pkg/osm2pgsql/osm2pgsql
+mkdir -p pkg/usr/local/bin/
+mkdir -p pkg/install_pkg
+cp -r build/mapnik pkg/install_pkg/mapnik
+cp -r build/mod_tile pkg/install_pkg/mod_tile
+cp -r build/osm2pgsql/build/osm2pgsql pkg/usr/local/bin/osm2pgsql
+chmod +x pkg/usr/local/bin/osm2pgsql
 chmod +x hooks/after-install.sh
 
 #-- Package all the things
@@ -50,6 +53,7 @@ fpm -C pkg \
     -t deb \
     --name tileserver \
     --version 1.0.0  \
+    --depends postgresql,postgresql-contrib,postgis,postgresql-9.4-postgis-2.1 \
     --description "TileServer setup (mapnik, osm2pgsql, mod_tile)" \
     --after-install hooks/after-install.sh \
     .

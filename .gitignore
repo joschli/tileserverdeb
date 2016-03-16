@@ -1,2 +1,6 @@
-
+*.deb
+*.sh~
+mapnik
+osm2pgsql
+mod_tile
 /build

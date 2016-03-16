@@ -12,5 +12,4 @@ make install-mod_tile
 ldconfig
 cd ../../
 rm -rf install_pkg
-mv osm2pgsql /usr/local/bin
 
