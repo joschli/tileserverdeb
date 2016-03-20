@@ -5,7 +5,7 @@ OLD_PATH="/var/lib/postgresql/9.4/main"
 FILE_PATH="/etc/postgresql/9.4/main/postgresql.conf"
 
 # REMOVE OLD DIRS
-rm -rf /srv/
+rm -rf /srv/postgresql
 
 # STOP SERVICES
 systemctl stop postgresql
@@ -15,8 +15,6 @@ sed -i "s|$OLD_PATH|$NEW_PATH|g" $FILE_PATH
 
 # CREATE STRUCTURE
 mkdir -p /srv/postgresql
-mkdir /srv/styles
-mkdir /srv/planet
 
 # COPY POSTGRESQL
 cp -r $OLD_PATH/. $NEW_PATH/

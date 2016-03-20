@@ -37,12 +37,15 @@ cd mod_tile
 make -j12
 cd ../../
 #-- copy things to pkg
-rm -rf pkg/
+rm -rf pkg/install_pkg
+rm -rf pkg/usr
+mkdir -p pkg/usr/local/share/osm2pgsql/
 mkdir -p pkg/usr/local/bin/
 mkdir -p pkg/install_pkg
 cp -r build/mapnik pkg/install_pkg/mapnik
 cp -r build/mod_tile pkg/install_pkg/mod_tile
 cp -r build/osm2pgsql/build/osm2pgsql pkg/usr/local/bin/osm2pgsql
+cp -r build/osm2pgsql/default.style pkg/usr/local/share/osm2pgsql/
 chmod +x pkg/usr/local/bin/osm2pgsql
 chmod +x hooks/after-install.sh
 
