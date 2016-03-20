@@ -53,7 +53,7 @@ fpm -C pkg \
     -t deb \
     --name tileserver \
     --version 1.0.0  \
-    --depends postgresql,postgresql-contrib,postgis,postgresql-9.4-postgis-2.1,apache2,autoconf,apache2-dev,libboost-all-dev,zlib1g-dev,libfreetype6-dev,libharfbuzz-dev,libpng-dev,libproj-dev,libpq-dev \
+    --depends postgresql,postgresql-contrib,postgis,postgresql-9.4-postgis-2.1,apache2,autoconf,apache2-dev,libboost-all-dev,zlib1g-dev,libfreetype6-dev,libharfbuzz-dev,libpng-dev,libproj-dev,libpq-dev,node-carto,unifont,ttf-dejavu \
     --description "TileServer setup (mapnik, osm2pgsql, mod_tile)" \
     --after-install hooks/after-install.sh \
     .
