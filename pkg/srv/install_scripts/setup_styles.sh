@@ -41,7 +41,7 @@ sed -i '401,413 d' $PROJECT_FILE
 cp /srv/styles/osm-bright-master/configure.py.sample /srv/styles/osm-bright-master/configure.py
 
 sed -i 's/osm\"/gis\"/' /srv/styles/osm-bright-master/configure.py
-sed -i 's|~/Documents/MapBox/project|/srv/styles|' srv/styles/osm-bright-master/configure.py
+sed -i 's|~/Documents/MapBox/project|/srv/styles|' /srv/styles/osm-bright-master/configure.py
 
 # Compile style
 cd /srv/styles/osm-bright-master/
